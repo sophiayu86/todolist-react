@@ -10,10 +10,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../api/auth';
 import Swal from 'sweetalert2';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   const handleClick = async () => {
     if (userName.length === 0) {
       return;
@@ -37,6 +39,7 @@ const LoginPage = () => {
         icon: 'success',
         showConfirmButton: false,
       });
+      navigate('/todos');
       return;
     }
 
