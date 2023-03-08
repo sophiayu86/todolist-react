@@ -7,17 +7,16 @@ import {
 import { ACLogoIcon } from 'assets/images';
 import { AuthInput } from 'components';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { login } from '../api/auth';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [userName, setUserName] = useState('');
+  const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const handleClick = async () => {
-    if (userName.length === 0) {
+    if (username.length === 0) {
       return;
     }
     if (password.length === 0) {
@@ -25,7 +24,7 @@ const LoginPage = () => {
     }
 
     const { success, authToken } = await login({
-      userName,
+      username,
       password,
     });
     if (success) {
@@ -39,7 +38,7 @@ const LoginPage = () => {
         icon: 'success',
         showConfirmButton: false,
       });
-      navigate('/todos');
+      navigate('/todo');
       return;
     }
 
@@ -62,7 +61,7 @@ const LoginPage = () => {
       <AuthInputContainer>
         <AuthInput
           label={'帳號'}
-          value={userName}
+          value={username}
           placeholder={'請輸入帳號'}
           onChange={(nameInputValue) => setUserName(nameInputValue)}
         />
