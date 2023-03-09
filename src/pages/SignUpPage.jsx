@@ -28,7 +28,7 @@ const SignUpPage = () => {
       return;
     }
 
-    const { success } = await register({
+    const success = await register({
       username,
       email,
       password,

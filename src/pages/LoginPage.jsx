@@ -24,10 +24,11 @@ const LoginPage = () => {
       return;
     }
 
-    const { success } = await login({
+    const success = await login({
       username,
       password,
     });
+
     if (success) {
       // 登入成功訊息
       Swal.fire({
